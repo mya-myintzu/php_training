@@ -1,3 +1,4 @@
+<!--Create diamond shape with stars-->
 <?php
  $num=6;
   for($row=0; $row<$num; $row++) {
