@@ -1,29 +1,27 @@
 <?php
- $n=6;
-  for($x=0; $x<$n; $x++) {
-    for($y=$x; $y<$n; $y++) {
+ $num=6;
+  for($row=0; $row<$num; $row++) {
+    for($col=$row; $col<$num; $col++) {
       echo "&nbsp &nbsp";
     }
-    for($y=0; $y<$x-1; $y++) {
+    for($col=0; $col<$row-1; $col++) {
       echo "*  ";
     }
-    for($y=0; $y<$x; $y++) {
+    for($col=0; $col<$row; $col++) {
       echo "*  ";
     }
       echo "<br>";
   }
 
-  for($x=0; $x<$n; $x++) {
-    for($y=0; $y<$x; $y++) {
+  for($row=0; $row<$num; $row++) {
+    for($col=0; $col<$row; $col++) {
         echo "&nbsp &nbsp";
     }
-    for($y=$x; $y<$n; $y++) {
+    for($col=$row; $col<$num; $col++) {
         echo "* ";
     }
-    for($y=$x; $y<$n-1; $y++) {
+    for($col=$row; $col<$num-1; $col++) {
         echo "* ";
     }
     echo "<br>";
   }
-  
- ?>
