@@ -12,36 +12,38 @@
 <body>
   <!--Calculate age-->
   <?php
-    function getAge($dob){
-      $bday = new DateTime($dob);
-      $today = new DateTime(date('m.d.y'));
-      if($bday>$today){
-        return 'You are not born yet';
-      }
-      $diff = $today ->diff($bday);
-      return 'Your current age is : '.$diff->y.' Years.';
+  function getAge($dob)
+  {
+    $bday = new DateTime($dob);
+    $today = new DateTime(date('m.d.y'));
+    if ($bday > $today) {
+      return 'You are not born yet';
     }
+    $diff = $today->diff($bday);
+    return 'Your current age is : ' . $diff->y . ' Years.';
+  }
 
 
   ?>
-<h1 class="center">Calculate Age from DOB</h1>
-<hr>
-<div class="form-wrapper">
-  <form>
-    <div class="input-wrapper">
-      <label>Date of Birth</label>
-      <input type="date" name="dob">
-      <input type="submit" value="Calculate Age">
-    </div>
-  </form>
-    <?php if(isset($_GET['dob']) && $_GET['dob']!=''){?>
-      <div class="result-wrapper">
-        <?php echo getAge($_GET['dob']);?>
+  <h1 class="center">Calculate Age from DOB</h1>
+  <hr>
+  <div class="form-wrapper">
+    <form>
+      <div class="input-wrapper">
+        <label>Date of Birth</label>
+        <input type="date" name="dob">
+        <input type="submit" value="Calculate Age">
       </div>
-      <?php } ?>
+    </form>
+    <?php if (isset($_GET['dob']) && $_GET['dob'] != '') { ?>
+      <div class="result-wrapper">
+        <?php echo getAge($_GET['dob']); ?>
+      </div>
+    <?php } ?>
 
-</div>
+  </div>
 
 
 </body>
+
 </html>
