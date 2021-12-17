@@ -1,13 +1,20 @@
-table{
+table {
   margin-top: 150px;
   border: 1px solid;
   background-color: #eee;
 }
-td{
-  border: 0px;
+
+td {
   padding: 10px;
+  border: 0px;
 }
-th{
-  border-bottom: 1px solid;
+
+th {
   background-color: #ddd;
+  border-bottom: 1px solid;
+}
+
+.center {
+  margin-right: auto;
+  margin-left: auto;
 }
