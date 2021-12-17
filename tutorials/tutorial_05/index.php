@@ -59,14 +59,14 @@
     require_once 'library/vendor/shuchkin/simplexlsx/src/SimpleXLSX.php';
     if ($xlsx = SimpleXLSX::parse('sample.xlsx')) {
       echo "<table><tbody>";
-      $i = 0;
+      $col = 0;
       foreach ($xlsx->rows() as $row) {
-        if ($i == 0) {
+        if ($col == 0) {
           echo "<tr><th>" . $row[0] . "</th><th>" . $row[3] . "</th></tr>";
         } else {
           echo "<tr><td>" . $row[0] . "</td><td>" . $row[3] . "</td></tr>";
         }
-        $i++;
+        $col++;
       }
       echo "</tbody></table>";
     } else {
