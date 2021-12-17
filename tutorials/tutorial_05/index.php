@@ -42,11 +42,12 @@
     if (($file = fopen('sample.csv', 'r')) !== FALSE) {
       while (($data = fgetcsv($file, 1000, ",")) !== FALSE) {
         $num = count($data);
-        echo "<p>fields in line $row: <br /></p>\n";
+        echo "<table><tbody>";
         $row++;
-        for ($c = 0; $c < $num; $c++) {
-          echo $data[$c] . "<br />\n";
+        for ($col = 0; $col < $num; $col++) {
+          echo $data[$col] . "<tr><th>" . $row[1] . "</th><th>" . $row[2] . "</th><th>" . $row[3] . "</th></tr>";
         }
+        echo "</tbody></table>";
       }
       fclose($file);
     }
@@ -55,15 +56,15 @@
   <div class="text">
     <h2>Excel</h2>
     <?php
-    require_once 'SimpleXLSX.php';
+    require_once 'library/vendor/shuchkin/simplexlsx/src/SimpleXLSX.php';
     if ($xlsx = SimpleXLSX::parse('sample.xlsx')) {
       echo "<table><tbody>";
       $i = 0;
       foreach ($xlsx->rows() as $row) {
         if ($i == 0) {
-          echo "<tr><th>" . $row[0] . "</th></tr>";
+          echo "<tr><th>" . $row[0] . "</th><th>" . $row[3] . "</th></tr>";
         } else {
-          echo "<tr><td>" . $row[0] . "</td></tr>";
+          echo "<tr><td>" . $row[0] . "</td><td>" . $row[3] . "</td></tr>";
         }
         $i++;
       }
