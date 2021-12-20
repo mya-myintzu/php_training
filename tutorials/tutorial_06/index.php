@@ -2,33 +2,30 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Upload Images</title>
 </head>
 
 <body>
-<form action="upload.php" method="post" enctype="multipart/form-data">
-		<label>Username</label>
-		<input type="text" name="username">
-		<br>
-		<label>UploadImage</label>
-		<input type="file" name='myfile'>
-		<br/>
-		<input type="submit" value="upload">
-	</form>
-  <?php
-	$user=$_POST['username'];
-	$image=$_FILES['myfile'];
-	echo "Hello $user <br/>";
-	echo "File Name<b>::</b> ".$image['name'];
+	<h1>Upload Image</h1>
+	<?php
+	if (isset($_POST['img_submit'])) {
+		$img_name = $_FILES['img_upload']['name'];
+		$tmp_img_name = $_FILES['img_upload']['tmp_name'];
+		$folder = $_POST['folder'];
 
-	move_uploaded_file($image['tmp_name'],"photos/".$image['name']);
-	//here the "photos" folder is in same folder as the upload.php, 
-	//otherwise complete url has to be mentioned
+		move_uploaded_file($tmp_img_name, "$folder/$img_name");
+	}
+
 	?>
+	<form action="" method="POST" enctype="multipart/form-data">
+		<input type="file" name="img_upload"><br>
+		<label for="folder">Folder Name</label><br>
+		<input type="text" name="folder"><br>
+		<input type="submit" name="img_submit">
+	</form>
 </body>
 
 </html>
