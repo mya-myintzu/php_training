@@ -15,7 +15,7 @@
 		$img_name = $_FILES['img_upload']['name'];
 		$tmp_img_name = $_FILES['img_upload']['tmp_name'];
 		$folder = $_POST['folder'];
-
+		mkdir($folder);
 		move_uploaded_file($tmp_img_name, "$folder/$img_name");
 	}
 
