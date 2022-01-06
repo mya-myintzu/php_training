@@ -36,3 +36,8 @@ Route::group(['prefix'=>'major'] , function(){
     Route::get('delete{id}' , 'MajorController@delete')->name('majorDelete');
     Route::get('show/{id}' , 'MajorController@show')->name('majorShow');
 });
+
+Route::get('excel-file', 'ExcelController@index')->name('excelFile');
+Route::post('import-excel-file', 'ExcelController@importExcel')->name('importExcel');
+Route::get('export-excel-file/{slug}', 'ExcelController@exportExcel')->name('exportExcel');
+
