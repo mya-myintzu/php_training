@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +43,15 @@ Route::get('excel-file', 'ExcelController@index')->name('excelFile');
 Route::post('import-excel-file', 'ExcelController@importExcel')->name('importExcel');
 Route::get('export-excel-file/{slug}', 'ExcelController@exportExcel')->name('exportExcel');
 
+
+Route::get ( '/', function () {
+    return view ( 'welcome' );
+} );
+Route::any ( '/search', function () {
+    $q = Input::get ( 'q' );
+    $user = User::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $user ) > 0)
+        return view ( 'welcome' )->withDetails ( $user )->withQuery ( $q );
+    else
+        return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
+} );
