@@ -55,3 +55,7 @@ Route::any ( '/search', function () {
     else
         return view ( 'welcome' )->withMessage ( 'No Details found. Try to search again !' );
 } );
+
+Route::get('/test/ajax/post', function(){
+    return view('post');
+});
